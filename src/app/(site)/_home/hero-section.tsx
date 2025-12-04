@@ -83,7 +83,6 @@ function HeroGeometric({
   description = 'Crafting exceptional digital experiences through innovative design and cutting-edge technology.'
 }: HeroSectionProps) {
   const { data: session } = useSession()
-  console.log('session :', session)
 
   const fadeUpVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -159,6 +158,7 @@ function HeroGeometric({
             className='mb-8 inline-flex items-center gap-2 rounded-full border border-white/8 bg-white/3 px-3 py-1 md:mb-12'
           >
             <Circle className='h-2 w-2 fill-rose-500/80' />
+
             <span className='text-sm tracking-wide text-white/60'>
               {session?.user?.name ? `Logged in as ${session.user.name}` : `You are not logged in`}
             </span>

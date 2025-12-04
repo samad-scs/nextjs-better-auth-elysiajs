@@ -90,7 +90,7 @@ export default function SignIn() {
                 await signIn.social(
                   {
                     provider: 'google',
-                    callbackURL: '/dashboard'
+                    callbackURL: 'http://localhost:7878'
                   },
                   {
                     onRequest: ctx => {
