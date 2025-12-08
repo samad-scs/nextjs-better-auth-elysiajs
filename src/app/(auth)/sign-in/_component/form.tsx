@@ -7,9 +7,11 @@ import { Label } from '@/components/ui/label'
 import { signIn } from '@/lib/auth-client'
 import { cn } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export default function SignIn() {
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
