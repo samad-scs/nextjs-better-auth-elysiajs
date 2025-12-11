@@ -28,15 +28,11 @@ const Header = () => {
                 </Button>
               </Link>
             ) : (
-              <Button
-                variant='default'
-                onClick={() => client.signOut()}
-                className='w-[110px] rounded-full px-6'
-                disabled={isLoading}
-              >
-                <LogOut className='mr-2 h-4 w-4' />
-                Log out
-              </Button>
+              <Link href='/dashboard'>
+                <Button variant='default' className='w-[110px] rounded-full px-6' disabled={isLoading}>
+                  Dashboard
+                </Button>
+              </Link>
             )}
           </div>
         </Suspense>
