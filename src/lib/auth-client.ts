@@ -1,7 +1,7 @@
 import { createAuthClient } from 'better-auth/react'
 import { oneTapClient } from 'better-auth/client/plugins'
 
-export const { signIn, signOut, signUp, useSession, getSession, oneTap } = createAuthClient({
+export const client = createAuthClient({
   baseURL: 'http://localhost:3000',
   plugins: [
     oneTapClient({

@@ -2,13 +2,13 @@
 
 import { Button } from '@components/ui/button'
 import { Skeleton } from '@components/ui/skeleton'
-import { signOut, useSession } from '@libs/auth-client'
+import { client } from '@libs/auth-client'
 import { LogIn, LogOut } from 'lucide-react'
 import Link from 'next/link'
 import { Suspense } from 'react'
 
 const Header = () => {
-  const { data: session, isPending, isRefetching } = useSession()
+  const { data: session, isPending, isRefetching } = client.useSession()
 
   const isLoading = isRefetching || isPending
 
@@ -30,7 +30,7 @@ const Header = () => {
             ) : (
               <Button
                 variant='default'
-                onClick={() => signOut()}
+                onClick={() => client.signOut()}
                 className='w-[110px] rounded-full px-6'
                 disabled={isLoading}
               >

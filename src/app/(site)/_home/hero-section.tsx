@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { useSession } from '@libs/auth-client'
+import { client } from '@libs/auth-client'
 import { motion, type Variants } from 'framer-motion'
 import { Circle } from 'lucide-react'
 
@@ -82,7 +82,7 @@ function HeroGeometric({
   title2 = 'Crafting Exceptional Websites',
   description = 'Crafting exceptional digital experiences through innovative design and cutting-edge technology.'
 }: HeroSectionProps) {
-  const { data: session } = useSession()
+  const { data: session } = client.useSession()
 
   const fadeUpVariants: Variants = {
     hidden: { opacity: 0, y: 30 },

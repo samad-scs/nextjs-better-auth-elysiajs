@@ -4,17 +4,33 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { signIn } from '@/lib/auth-client'
+import { client } from '@/lib/auth-client'
 import { cn } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 export default function SignIn() {
   const router = useRouter()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    client.oneTap({
+      fetchOptions: {
+        onError: ({ error }) => {
+          toast.error(error.message || 'An error occurred')
+        },
+        onSuccess: () => {
+          toast.success('Successfully signed in')
+          router.push('/')
+        }
+      }
+    })
+  }, [])
 
   return (
     <Card className='w-full max-w-lg!'>
@@ -61,7 +77,7 @@ export default function SignIn() {
             disabled={loading}
             onClick={async () => {
               try {
-                await signIn.email(
+                await client.signIn.email(
                   {
                     email,
                     password
@@ -89,7 +105,7 @@ export default function SignIn() {
               className={cn('w-full gap-2')}
               disabled={loading}
               onClick={async () => {
-                await signIn.social(
+                await client.signIn.social(
                   {
                     provider: 'google',
                     callbackURL: 'http://localhost:7878'

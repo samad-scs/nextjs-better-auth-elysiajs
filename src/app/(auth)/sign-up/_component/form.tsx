@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { signUp } from '@/lib/auth-client'
+import { client } from '@/lib/auth-client'
 import { Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -94,7 +94,7 @@ export default function SignUp() {
             className='w-full'
             disabled={loading}
             onClick={async () => {
-              await signUp.email({
+              await client.signUp.email({
                 email,
                 password,
                 name: `${firstName} ${lastName}`,
